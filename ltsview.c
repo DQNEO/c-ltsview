@@ -49,14 +49,9 @@ int main(int argc, char **argv)
 	i = 0;
 	while ((tab = strchr(tmp, '\t')) != NULL ) {
 	    *tab = '\0';
-	    //items[i++] = tmp;
-
-	    //item.concate_string = tmp;
 	    parse_item(&item, tmp);
 	    items[i++] = &item;
-
 	    printf("%s: %s\n", item.key, item.value);
-
 	    tmp = tab + 1;
 	}
     }
