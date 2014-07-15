@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 #define BUF_MAX 1024
+#define KEYS_MAX 100
 
 struct item {
     char *key;
@@ -37,7 +38,7 @@ int main(int argc, char **argv)
     }
 
 
-    char *keys[100];
+    char *keys[KEYS_MAX];
     int i;
 
     keys[0] = NULL;
@@ -52,7 +53,7 @@ int main(int argc, char **argv)
 
 
     char buf[BUF_MAX];
-    struct item *items[100];
+    struct item *items[KEYS_MAX];
     char *tab;
     char *tmp;
     struct item item;
