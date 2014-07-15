@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #define BUF_MAX 1024
 
@@ -15,6 +16,19 @@ void usage() {
     fprintf(stderr, "-k         select keys\n");
 }
 
+void parse_item(struct item *item, char *key_value)
+{
+    char *colon;
+    colon = strchr(key_value, ':');
+    if (colon == NULL) {
+	perror("invalid format");
+	exit(1);
+    }
+    *colon = '\0';
+    item->key = key_value;
+    item->value = colon + 1;
+}
+
 int main(int argc, char **argv)
 {
     if (argc >= 2 && strcmp(argv[1],"--help") == 0) {
@@ -23,13 +37,10 @@ int main(int argc, char **argv)
     }
 
     char buf[BUF_MAX];
-    char *items[100];
+    struct item *items[100];
     char *p;
     char *key_value;
-    char *key;
-    char *value;
     int i;
-    char *colon;
     struct item item;
 
     while (fgets(buf, BUF_MAX, stdin) != NULL) {
@@ -38,16 +49,11 @@ int main(int argc, char **argv)
 	i = 0;
 	while ((p = strchr(key_value, '\t')) != NULL ) {
 	    *p = '\0';
-	    items[i++] = key_value;
+	    //items[i++] = key_value;
 
-	    colon = strchr(key_value, ':');
-	    if (colon == NULL) {
-		perror("invalid format");
-		return 1;
-	    }
-	    *colon = '\0';
-	    item.key = key_value;
-	    item.value = colon + 1;
+	    //item.concate_string = key_value;
+	    parse_item(&item, key_value);
+	    items[i++] = &item;
 
 	    printf("%s: %s\n", item.key, item.value);
 
