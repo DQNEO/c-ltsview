@@ -36,11 +36,22 @@ int main(int argc, char **argv)
 	return(1);
     }
 
+
+    char *keys[100];
+    int i;
+    if (argc >= 2 && strcmp(argv[1],"-k") == 0) {
+	for (i = 2; i < argc ;i++) {
+	    keys[i-2] = argv[i];
+	    printf("k:%s\n", argv[i]);
+	}
+	return(1);
+    }
+
+
     char buf[BUF_MAX];
     struct item *items[100];
     char *tab;
     char *tmp;
-    int i;
     struct item item;
 
     while (fgets(buf, BUF_MAX, stdin) != NULL) {
