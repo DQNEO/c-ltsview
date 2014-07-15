@@ -44,6 +44,7 @@ int main(int argc, char **argv)
 	    keys[i-2] = argv[i];
 	    printf("k:%s\n", argv[i]);
 	}
+	keys[i - 1] = NULL;
 	return(1);
     }
 
