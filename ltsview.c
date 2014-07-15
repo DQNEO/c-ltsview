@@ -2,9 +2,20 @@
 #include <string.h>
 
 #define BUF_MAX 1024
+void usage() {
+    fprintf(stderr, "Usage: ltsview [OPTIONS]\n");
+    fprintf(stderr, "viewer of ltsv log\n");
+    fprintf(stderr, "\n");
+    fprintf(stderr, "-k         select keys\n");
+}
 
-int main()
+int main(int argc, char **argv)
 {
+    if (argc >= 2 && strcmp(argv[1],"--help") == 0) {
+	usage();
+	return(1);
+    }
+
     char buf[BUF_MAX];
     char *items[100];
     char *p;
