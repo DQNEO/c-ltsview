@@ -2,6 +2,12 @@
 #include <string.h>
 
 #define BUF_MAX 1024
+
+struct item {
+    char *key;
+    char *value;
+};
+
 void usage() {
     fprintf(stderr, "Usage: ltsview [OPTIONS]\n");
     fprintf(stderr, "viewer of ltsv log\n");
@@ -24,6 +30,8 @@ int main(int argc, char **argv)
     char *value;
     int i;
     char *colon;
+    struct item item;
+
     while (fgets(buf, BUF_MAX, stdin) != NULL) {
 	printf("=========\n");
 	key_value = buf;
@@ -38,10 +46,10 @@ int main(int argc, char **argv)
 		return 1;
 	    }
 	    *colon = '\0';
-	    key = key_value;
-	    value = colon + 1;
+	    item.key = key_value;
+	    item.value = colon + 1;
 
-	    printf("%s: %s\n", key,value);
+	    printf("%s: %s\n", item.key, item.value);
 
 	    key_value = p + 1;
 	}
