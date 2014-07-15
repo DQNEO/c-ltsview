@@ -38,7 +38,7 @@ int main(int argc, char **argv)
 
     char buf[BUF_MAX];
     struct item *items[100];
-    char *p;
+    char *tab;
     char *key_value;
     int i;
     struct item item;
@@ -47,8 +47,8 @@ int main(int argc, char **argv)
 	printf("=========\n");
 	key_value = buf;
 	i = 0;
-	while ((p = strchr(key_value, '\t')) != NULL ) {
-	    *p = '\0';
+	while ((tab = strchr(key_value, '\t')) != NULL ) {
+	    *tab = '\0';
 	    //items[i++] = key_value;
 
 	    //item.concate_string = key_value;
@@ -57,7 +57,7 @@ int main(int argc, char **argv)
 
 	    printf("%s: %s\n", item.key, item.value);
 
-	    key_value = p + 1;
+	    key_value = tab + 1;
 	}
     }
 
