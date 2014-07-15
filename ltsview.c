@@ -39,6 +39,8 @@ int main(int argc, char **argv)
 
     char *keys[100];
     int i;
+
+    keys[0] = NULL;
     if (argc >= 2 && strcmp(argv[1],"-k") == 0) {
 	for (i = 2; i < argc ;i++) {
 	    keys[i-2] = argv[i];
