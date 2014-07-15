@@ -39,25 +39,25 @@ int main(int argc, char **argv)
     char buf[BUF_MAX];
     struct item *items[100];
     char *tab;
-    char *key_value;
+    char *tmp;
     int i;
     struct item item;
 
     while (fgets(buf, BUF_MAX, stdin) != NULL) {
 	printf("=========\n");
-	key_value = buf;
+	tmp = buf;
 	i = 0;
-	while ((tab = strchr(key_value, '\t')) != NULL ) {
+	while ((tab = strchr(tmp, '\t')) != NULL ) {
 	    *tab = '\0';
-	    //items[i++] = key_value;
+	    //items[i++] = tmp;
 
-	    //item.concate_string = key_value;
-	    parse_item(&item, key_value);
+	    //item.concate_string = tmp;
+	    parse_item(&item, tmp);
 	    items[i++] = &item;
 
 	    printf("%s: %s\n", item.key, item.value);
 
-	    key_value = tab + 1;
+	    tmp = tab + 1;
 	}
     }
 
