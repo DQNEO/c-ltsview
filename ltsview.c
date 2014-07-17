@@ -39,16 +39,14 @@ int main(int argc, char **argv)
 
 
     char *keys[KEYS_MAX];
+    memset(keys, 0, sizeof(keys));
     int i;
 
-    keys[0] = NULL;
     if (argc >= 2 && strcmp(argv[1],"-k") == 0) {
 	for (i = 2; i < argc ;i++) {
 	    keys[i-2] = argv[i];
 	    printf("k:%s\n", argv[i]);
 	}
-	keys[i - 1] = NULL;
-	return(1);
     }
 
 
