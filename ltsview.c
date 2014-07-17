@@ -16,7 +16,7 @@ int in_array(char *s, char **strings);
 
 int main(int argc, char **argv)
 {
-    if (argc >= 2 && strcmp(argv[1],"--help") == 0) {
+    if (argc >= 2 && (strcmp(argv[1],"--help") == 0 || strcmp(argv[1],"-h") == 0)) {
 	usage();
 	return(1);
     }
