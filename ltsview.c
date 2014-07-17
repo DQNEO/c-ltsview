@@ -40,6 +40,13 @@ int main(int argc, char **argv)
 
     while (fgets(buf, BUF_MAX, stdin) != NULL) {
 	printf("=========\n");
+	//printf("%s\n", buf); // debug
+
+	if (buf[BUF_MAX -2] != '\0') {
+	    fprintf(stderr, "buffer over run!\n");
+	    return 1;
+	}
+
 	tmp = buf;
 	i = 0;
 	memset(items,0, sizeof(items)); // is this right?
