@@ -14,7 +14,7 @@ void usage() {
     fprintf(stderr, "Usage: ltsview [OPTIONS]\n");
     fprintf(stderr, "viewer of ltsv log\n");
     fprintf(stderr, "\n");
-    fprintf(stderr, "-k         select keys\n");
+    fprintf(stderr, "-k <key,..>     select keys\n");
 }
 
 void parse_item(struct item *item, char *key_value)
