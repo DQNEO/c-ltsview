@@ -70,10 +70,10 @@ int main(int argc, char **argv)
 }
 
 void usage() {
-    fprintf(stderr, "Usage: ltsview [OPTIONS]\n");
-    fprintf(stderr, "viewer of ltsv log\n");
-    fprintf(stderr, "\n");
-    fprintf(stderr, "-k <key,..>     select keys\n");
+    printf("Usage: ltsview [OPTIONS]\n");
+    printf("viewer of ltsv log\n");
+    printf("\n");
+    printf("-k <key,..>     select keys\n");
 }
 
 void parse_item(struct item *item, char *key_value)
