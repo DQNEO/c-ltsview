@@ -67,7 +67,6 @@ int main(int argc, char **argv)
     struct item items[KEYS_MAX];
     char *tab;
     char *tmp;
-    int is_found;
 
     while (fgets(buf, BUF_MAX, stdin) != NULL) {
 	printf("=========\n");
@@ -81,19 +80,12 @@ int main(int argc, char **argv)
 	}
 
 	for (i = 0;items[i].key != NULL;i++) {
-	    is_found = 0;
 
-	    if (keys[0] == NULL) {
-		is_found = 1;
-	    } else {
-		if (in_array(items[i].key, keys)) {
-		    is_found = 1;
-		}
+	    if (keys[0] != NULL && ! in_array(items[i].key, keys)) {
+		continue;
 	    }
 
-	    if (is_found) {
-		printf("%d:%s: %s\n", i, items[i].key, items[i].value);
-	    }
+	    printf("%d:%s: %s\n", i, items[i].key, items[i].value);
 	}
     }
 
