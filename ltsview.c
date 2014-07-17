@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define BUF_MAX 1024
+#define BUF_MAX 10240
 #define KEYS_MAX 100
 
 struct item {
