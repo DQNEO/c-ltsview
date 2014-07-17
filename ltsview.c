@@ -81,7 +81,7 @@ void parse_item(struct item *item, char *key_value)
     char *colon;
     colon = strchr(key_value, ':');
     if (colon == NULL) {
-	perror("invalid format");
+	fprintf(stderr, "invalid format:[%s]", key_value);
 	exit(1);
     }
     *colon = '\0';
