@@ -54,6 +54,7 @@ int main(int argc, char **argv)
     struct item items[KEYS_MAX];
     char *tab;
     char *tmp;
+    int j;
 
     while (fgets(buf, BUF_MAX, stdin) != NULL) {
 	printf("=========\n");
@@ -67,7 +68,16 @@ int main(int argc, char **argv)
 	}
 
 	for (i = 0;items[i].key != NULL;i++) {
-	    printf("%d:%s: %s\n", i, items[i].key, items[i].value);
+	    if (keys[0] == NULL) {
+		printf("%d:%s: %s\n", i, items[i].key, items[i].value);
+	    } else {
+		for (j = 0;keys[j] != NULL;j++) {
+		    if (strcmp(keys[j], items[i].key) == 0) {
+			printf("%d:%s: %s\n", i, items[i].key, items[i].value);
+			break;
+		    }
+		}
+	    }
 	}
     }
 
