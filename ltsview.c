@@ -25,13 +25,26 @@ int main(int argc, char **argv)
     char *keys[KEYS_MAX];
     memset(keys, 0, sizeof(keys));
     int i;
+    char *concate_keys;
 
+    /* parse -k options */
     if (argc >= 2 && strcmp(argv[1],"-k") == 0) {
-	for (i = 2; i < argc ;i++) {
-	    keys[i-2] = argv[i];
+	if (argc == 2) {
+	    fprintf(stderr, "no argument for -k option\n");
+	    exit(1);
+	}
+
+	concate_keys = argv[2];
+	printf("concate_keys = %s\n", concate_keys);
+
+	keys[0] = strtok(concate_keys, ",");
+	if (keys[0] != NULL) {
+	    i = 1;
+	    while((keys[i] = strtok(NULL, ",")) != NULL) {
+		i++;
+	    }
 	}
     }
-
 
     char buf[BUF_MAX];
     struct item items[KEYS_MAX];
