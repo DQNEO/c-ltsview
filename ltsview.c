@@ -30,6 +30,19 @@ void parse_item(struct item *item, char *key_value)
     item->value = colon + 1;
 }
 
+int in_array(char *s, char **strings)
+{
+    int j;
+    for (j = 0; strings[j] != NULL; j++) {
+	if (strcmp(s, strings[j]) == 0) {
+	    return 1;  // found
+	}
+    }
+
+    return 0; // not found
+}
+
+
 int main(int argc, char **argv)
 {
     if (argc >= 2 && strcmp(argv[1],"--help") == 0) {
@@ -71,11 +84,8 @@ int main(int argc, char **argv)
 	    if (keys[0] == NULL) {
 		printf("%d:%s: %s\n", i, items[i].key, items[i].value);
 	    } else {
-		for (j = 0;keys[j] != NULL;j++) {
-		    if (strcmp(keys[j], items[i].key) == 0) {
-			printf("%d:%s: %s\n", i, items[i].key, items[i].value);
-			break;
-		    }
+		if (in_array(items[i].key, keys)) {
+		    printf("%d:%s: %s\n", i, items[i].key, items[i].value);
 		}
 	    }
 	}
