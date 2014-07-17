@@ -66,6 +66,7 @@ int main(int argc, char **argv)
 	    *tab = '\0';
 	    parse_item(&item, tmp);
 	    items[i++] = &item;
+	    items[i] = NULL;
 	    printf("%s: %s\n", item.key, item.value);
 	    tmp = tab + 1;
 	}
