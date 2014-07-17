@@ -10,38 +10,6 @@ struct item {
     char *value;
 };
 
-void usage() {
-    fprintf(stderr, "Usage: ltsview [OPTIONS]\n");
-    fprintf(stderr, "viewer of ltsv log\n");
-    fprintf(stderr, "\n");
-    fprintf(stderr, "-k <key,..>     select keys\n");
-}
-
-void parse_item(struct item *item, char *key_value)
-{
-    char *colon;
-    colon = strchr(key_value, ':');
-    if (colon == NULL) {
-	perror("invalid format");
-	exit(1);
-    }
-    *colon = '\0';
-    item->key = key_value;
-    item->value = colon + 1;
-}
-
-int in_array(char *s, char **strings)
-{
-    int j;
-    for (j = 0; strings[j] != NULL; j++) {
-	if (strcmp(s, strings[j]) == 0) {
-	    return 1;  // found
-	}
-    }
-
-    return 0; // not found
-}
-
 void usage();
 void parse_item(struct item *item, char *key_value);
 int in_array(char *s, char **strings);
@@ -94,3 +62,36 @@ int main(int argc, char **argv)
 
     return 0;
 }
+
+void usage() {
+    fprintf(stderr, "Usage: ltsview [OPTIONS]\n");
+    fprintf(stderr, "viewer of ltsv log\n");
+    fprintf(stderr, "\n");
+    fprintf(stderr, "-k <key,..>     select keys\n");
+}
+
+void parse_item(struct item *item, char *key_value)
+{
+    char *colon;
+    colon = strchr(key_value, ':');
+    if (colon == NULL) {
+	perror("invalid format");
+	exit(1);
+    }
+    *colon = '\0';
+    item->key = key_value;
+    item->value = colon + 1;
+}
+
+int in_array(char *s, char **strings)
+{
+    int j;
+    for (j = 0; strings[j] != NULL; j++) {
+	if (strcmp(s, strings[j]) == 0) {
+	    return 1;  // found
+	}
+    }
+
+    return 0; // not found
+}
+
