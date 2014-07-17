@@ -42,6 +42,9 @@ int in_array(char *s, char **strings)
     return 0; // not found
 }
 
+void usage();
+void parse_item(struct item *item, char *key_value);
+int in_array(char *s, char **strings);
 
 int main(int argc, char **argv)
 {
