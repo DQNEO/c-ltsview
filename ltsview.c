@@ -53,22 +53,23 @@ int main(int argc, char **argv)
 
 
     char buf[BUF_MAX];
-    struct item *items[KEYS_MAX];
+    struct item items[KEYS_MAX];
     char *tab;
     char *tmp;
-    struct item item;
 
     while (fgets(buf, BUF_MAX, stdin) != NULL) {
 	printf("=========\n");
 	tmp = buf;
 	i = 0;
+	memset(items,0, sizeof(items)); // is this right?
 	while ((tab = strchr(tmp, '\t')) != NULL ) {
 	    *tab = '\0';
-	    parse_item(&item, tmp);
-	    items[i++] = &item;
-	    items[i] = NULL;
-	    printf("%s: %s\n", item.key, item.value);
+	    parse_item(&items[i++], tmp);
 	    tmp = tab + 1;
+	}
+
+	for (i = 0;items[i].key != NULL;i++) {
+	    printf("%d:%s: %s\n", i, items[i].key, items[i].value);
 	}
     }
 
