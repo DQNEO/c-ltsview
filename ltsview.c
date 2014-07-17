@@ -62,7 +62,7 @@ int main(int argc, char **argv)
 		continue;
 	    }
 
-	    printf("%d:%s: %s\n", i, items[i].key, items[i].value);
+	    printf("%s: %s\n", items[i].key, items[i].value);
 	}
     }
 
