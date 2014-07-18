@@ -27,7 +27,6 @@ int main(int argc, char **argv)
 	return(1);
     }
 
-
     char *keys[KEYS_MAX];
     memset(keys, 0, sizeof(keys));
     int i;
@@ -78,11 +77,9 @@ int main(int argc, char **argv)
 	parse_item(&items[i], tmp);
 
 	for (i = 0;items[i].key != NULL;i++) {
-
 	    if (keys[0] != NULL && ! in_array(items[i].key, keys)) {
 		continue;
 	    }
-
 	    printf("%s: %s\n", items[i].key, items[i].value);
 	}
     }
