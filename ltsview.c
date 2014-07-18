@@ -50,6 +50,7 @@ int main(int argc, char **argv)
     struct item items[KEYS_MAX];
     char *tab;
     char *tmp;
+    char *newline;
 
     while (fgets(buf, BUF_MAX, stdin) != NULL) {
 	printf("=========\n");
@@ -68,6 +69,9 @@ int main(int argc, char **argv)
 	    parse_item(&items[i++], tmp);
 	    tmp = tab + 1;
 	}
+	newline = strchr(tmp, '\n');
+	*newline = '\0';
+	parse_item(&items[i], tmp);
 
 	for (i = 0;items[i].key != NULL;i++) {
 
