@@ -44,7 +44,7 @@ l3: v3
 
 show usage.
 
-### -V, --version
+### -v, --version
 
 show version.
 
