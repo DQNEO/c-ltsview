@@ -35,7 +35,6 @@ int main(int argc, char **argv)
 	}
 
 	concate_keys = argv[2];
-	printf("concate_keys = %s\n", concate_keys);
 
 	keys[0] = strtok(concate_keys, ",");
 	if (keys[0] != NULL) {
@@ -54,7 +53,6 @@ int main(int argc, char **argv)
 
     while (fgets(buf, BUF_MAX, stdin) != NULL) {
 	printf("=========\n");
-	//printf("%s\n", buf); // debug
 
 	if (buf[BUF_MAX -2] != '\0') {
 	    fprintf(stderr, "buffer over run!\n");
