@@ -50,5 +50,6 @@ show version.
 
 ## License
 
-GPLv2
+GPLv3 or later
+
 
