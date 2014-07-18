@@ -11,6 +11,7 @@ struct item {
 };
 
 void usage();
+void version();
 void parse_item(struct item *item, char *key_value);
 int in_array(char *s, char **strings);
 
@@ -18,6 +19,11 @@ int main(int argc, char **argv)
 {
     if (argc >= 2 && (strcmp(argv[1],"--help") == 0 || strcmp(argv[1],"-h") == 0)) {
 	usage();
+	return(1);
+    }
+
+    if (argc >= 2 && (strcmp(argv[1],"--version") == 0 || strcmp(argv[1],"-v") == 0)) {
+	version();
 	return(1);
     }
 
@@ -89,6 +95,14 @@ void usage() {
     printf("viewer of ltsv log\n");
     printf("\n");
     printf("-k <key,..>     select keys\n");
+}
+
+void version() {
+    printf("ltsview 0.0.1\n");
+    printf("License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.\n");
+    printf("This is free software: you are free to change and redistribute it.\n");
+    printf("There is NO WARRANTY, to the extent permitted by law.\n\n");
+    printf("Written by DQNEO\n");
 }
 
 void parse_item(struct item *item, char *key_value)
