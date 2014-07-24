@@ -106,8 +106,8 @@ void parse_item(struct item *item, char *key_value)
     char *colon;
     colon = strchr(key_value, ':');
     if (colon == NULL) {
-        fprintf(stderr, "invalid format:[%s]", key_value);
-        exit(1);
+        fprintf(stderr, "invalid format:[%s]\n", key_value);
+        return;
     }
     *colon = '\0';
     item->key = key_value;
