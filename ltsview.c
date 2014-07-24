@@ -18,13 +18,13 @@ int in_array(char *s, char **strings);
 int main(int argc, char **argv)
 {
     if (argc >= 2 && (strcmp(argv[1],"--help") == 0 || strcmp(argv[1],"-h") == 0)) {
-	usage();
-	return(1);
+        usage();
+        return(1);
     }
 
     if (argc >= 2 && (strcmp(argv[1],"--version") == 0 || strcmp(argv[1],"-v") == 0)) {
-	version();
-	return(1);
+        version();
+        return(1);
     }
 
     char *keys[KEYS_MAX];
@@ -34,20 +34,20 @@ int main(int argc, char **argv)
 
     /* parse -k options */
     if (argc >= 2 && strcmp(argv[1],"-k") == 0) {
-	if (argc == 2) {
-	    fprintf(stderr, "no argument for -k option\n");
-	    exit(1);
-	}
+        if (argc == 2) {
+            fprintf(stderr, "no argument for -k option\n");
+            exit(1);
+        }
 
-	concate_keys = argv[2];
+        concate_keys = argv[2];
 
-	keys[0] = strtok(concate_keys, ",");
-	if (keys[0] != NULL) {
-	    i = 1;
-	    while((keys[i] = strtok(NULL, ",")) != NULL) {
-		i++;
-	    }
-	}
+        keys[0] = strtok(concate_keys, ",");
+        if (keys[0] != NULL) {
+            i = 1;
+            while((keys[i] = strtok(NULL, ",")) != NULL) {
+                i++;
+            }
+        }
     }
 
     char buf[BUF_MAX];
@@ -57,31 +57,31 @@ int main(int argc, char **argv)
     char *newline;
 
     while (fgets(buf, BUF_MAX, stdin) != NULL) {
-	printf("=========\n");
+        printf("=========\n");
 
-	if (buf[BUF_MAX -2] != '\0') {
-	    fprintf(stderr, "buffer over run!\n");
-	    return 1;
-	}
+        if (buf[BUF_MAX -2] != '\0') {
+            fprintf(stderr, "buffer over run!\n");
+            return 1;
+        }
 
-	tmp = buf;
-	i = 0;
-	memset(items,0, sizeof(items)); // is this right?
-	while ((tab = strchr(tmp, '\t')) != NULL ) {
-	    *tab = '\0';
-	    parse_item(&items[i++], tmp);
-	    tmp = tab + 1;
-	}
-	newline = strchr(tmp, '\n');
-	*newline = '\0';
-	parse_item(&items[i], tmp);
+        tmp = buf;
+        i = 0;
+        memset(items,0, sizeof(items)); // is this right?
+        while ((tab = strchr(tmp, '\t')) != NULL ) {
+            *tab = '\0';
+            parse_item(&items[i++], tmp);
+            tmp = tab + 1;
+        }
+        newline = strchr(tmp, '\n');
+        *newline = '\0';
+        parse_item(&items[i], tmp);
 
-	for (i = 0;items[i].key != NULL;i++) {
-	    if (keys[0] != NULL && ! in_array(items[i].key, keys)) {
-		continue;
-	    }
-	    printf("%s: %s\n", items[i].key, items[i].value);
-	}
+        for (i = 0;items[i].key != NULL;i++) {
+            if (keys[0] != NULL && ! in_array(items[i].key, keys)) {
+                continue;
+            }
+            printf("%s: %s\n", items[i].key, items[i].value);
+        }
     }
 
     return 0;
@@ -107,8 +107,8 @@ void parse_item(struct item *item, char *key_value)
     char *colon;
     colon = strchr(key_value, ':');
     if (colon == NULL) {
-	fprintf(stderr, "invalid format:[%s]", key_value);
-	exit(1);
+        fprintf(stderr, "invalid format:[%s]", key_value);
+        exit(1);
     }
     *colon = '\0';
     item->key = key_value;
@@ -119,9 +119,9 @@ int in_array(char *s, char **strings)
 {
     int j;
     for (j = 0; strings[j] != NULL; j++) {
-	if (strcmp(s, strings[j]) == 0) {
-	    return 1;  // found
-	}
+        if (strcmp(s, strings[j]) == 0) {
+            return 1;  // found
+        }
     }
 
     return 0; // not found
