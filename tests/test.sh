@@ -25,6 +25,14 @@ is () {
 diag () {
     echo $1 >&2
 }
+
+diag "No LTSV format"
+ret=$(printf 'hogehoge' | $cmd)
+exp="=========
+l1: v1"
+
+#is "$ret" "$exp"
+
 ret=$(printf 'l1:v1' | $cmd)
 exp="=========
 l1: v1"
