@@ -4,6 +4,9 @@ curdir=$(cd $(dirname $0); pwd)
 cmd=../ltsview
 counter=1
 tests=4
+
+echo "1..${tests}"
+
 is () {
     ret=$1
     exp=$2
@@ -18,7 +21,19 @@ is () {
     fi
 
 }
-echo "1..2"
+
+ret=$(printf 'l1:v1' | $cmd)
+exp="=========
+l1: v1"
+
+is "$ret" "$exp"
+
+ret=$(printf 'l1:v1\n' | $cmd)
+exp="=========
+l1: v1"
+
+is "$ret" "$exp"
+
 ret=$(printf 'l1:v1\tl2:v2\nl3:v3' | $cmd)
 exp="=========
 l1: v1
