@@ -22,6 +22,9 @@ is () {
 
 }
 
+diag () {
+    echo $1 >&2
+}
 ret=$(printf 'l1:v1' | $cmd)
 exp="=========
 l1: v1"
