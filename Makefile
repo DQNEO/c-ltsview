@@ -3,4 +3,4 @@ all : $(PROGNAME).c
 	gcc -g3 -O0 -Wall $(PROGNAME).c -o $(PROGNAME)
 
 test : all
-	prove tests/*.sh
+	prove
