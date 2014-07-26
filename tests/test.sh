@@ -1,7 +1,7 @@
 #!/bin/bash
 
 curdir=$(cd $(dirname $0); pwd)
-cmd=../ltsview
+cmd=$curdir/../ltsview
 counter=1
 tests=4
 
