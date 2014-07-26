@@ -3,7 +3,7 @@
 curdir=$(cd $(dirname $0); pwd)
 cmd=$curdir/../ltsview
 counter=1
-tests=4
+tests=5
 
 echo "1..${tests}"
 
@@ -28,10 +28,9 @@ diag () {
 
 diag "No LTSV format"
 ret=$(printf 'hogehoge' | $cmd)
-exp="=========
-l1: v1"
+exp="========="
 
-#is "$ret" "$exp"
+is "$ret" "$exp"
 
 ret=$(printf 'l1:v1' | $cmd)
 exp="=========
