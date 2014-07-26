@@ -1,8 +1,9 @@
 #!/bin/bash
 
-cmd=./ltsview
-
+curdir=$(cd $(dirname $0); pwd)
+cmd=../ltsview
 counter=1
+tests=4
 is () {
     ret=$1
     exp=$2
