@@ -4,6 +4,7 @@
 
 #define BUF_MAX 10240
 #define KEYS_MAX 100
+#define VERSION "0.0.2"
 
 struct item {
     char *key;
@@ -94,7 +95,7 @@ void usage() {
 }
 
 void version() {
-    printf("ltsview 0.0.1\n");
+    printf("ltsview %s\n", VERSION);
     printf("License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.\n");
     printf("This is free software: you are free to change and redistribute it.\n");
     printf("There is NO WARRANTY, to the extent permitted by law.\n\n");
